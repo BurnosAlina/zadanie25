@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zadań</title>
+</head>
+<body>
+<main layout:fragment="content" class="content">
+    <div class="return">
+        <a th:href="@{/}" >Powrót do strony głównej</a>
+    </div>
+  <h2>Lista zadań</h2>
+    <ol class="list-group list-group-numbered">
+        <li th:each="task: ${tasks}" class="list-group-item">
+            <span th:text="${task}">A list item</span>
+            <div th:if="${!task.isDone}">
+                <a th:href="@{/done/{id}(id=${task.id})}">Oznacz jako zrealizowane</a>
+            </div>
+            <div>
+                <a th:href="@{/edit/{id}(id=${task.id})}">Edytuj</a>
+            </div>
+        </li>
+    </ol>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+</head>
+<body>
+<main layout:fragment="content" class="content">
+<h2>Formularz dodawania zadań</h2>
+    <form method="post" action="/add" th:object="${task}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nazwa</label>
+            <input type="text" class="form-control" id="name" placeholder="Nazwa" th:field="*{name}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Opis</label>
+            <textarea class="form-control" id="description" rows="3" placeholder="Krótki opis zadania" th:field="*{description}"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="deadline" class="form-label">Termin ostateczny realizacji</label>
+            <input type="date" class="form-control" id="deadline" th:field="*{deadline}">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Zapisz</button>
+        </div>
+    </form>
+    <ul class="list-group">
+        <li class="list-group-item"><a th:href="@{/notDoneList}">Wyświetl zadania do zrealizowania</a></li>
+        <li class="list-group-item"><a th:href="@{/doneList}">Archiwum - zadania zrealizowane</a></li>
+    </ul>
+</main>
+</body>
+</html>
