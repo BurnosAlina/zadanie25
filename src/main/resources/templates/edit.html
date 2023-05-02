@@ -12,7 +12,7 @@
         <a th:href="@{/}" >Powrót do strony głównej</a>
     </div>
     <h2>Formularz edytowania zadania</h2>
-    <form method="post" action="/edit/{id}(id=${task.id})" th:object="${task}">
+    <form method="post" th:action="|/edit/id=${task.id}|" th:object="${task}">
         <div>
             <input type="hidden" id="id" th:field="*{id}">
         </div>
